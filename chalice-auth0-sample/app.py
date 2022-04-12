@@ -22,10 +22,10 @@ class AuthError(Exception):
 def auth_error_handler(e):
     return Response(
         body=json.dumps({
-            "message": e.error['message']
+            'message': e.error['message']
         }),
         status_code = 401,
-        headers = {"Content-Type": "application/json"}
+        headers = {'Content-Type': 'application/json'}
     )
 
 def get_token_auth_header():
@@ -36,7 +36,7 @@ def get_token_auth_header():
     request = app.current_request
 
     # Get Authorization header
-    auth = request.headers.get("Authorization", None)
+    auth = request.headers.get('Authorization', None)
 
     # Handle missing Authorization header
     if not auth:
@@ -46,7 +46,7 @@ def get_token_auth_header():
     parts = auth.split()
 
     # Check for correct authorization type
-    if parts[0].lower() != "bearer":
+    if parts[0].lower() != 'bearer':
         raise AuthError({'message': 'Invalid authorization header, must start with Bearer.'})
 
     # Check for correct number of parts    
@@ -61,8 +61,9 @@ def get_token_auth_header():
     return token
 
 def requires_auth(f):
-    """Determines if the Access Token is valid
-    """
+    '''
+    Determines if the Access Token is valid
+    '''
     @wraps(f)
     def decorated(*args, **kwargs):
         try:
@@ -81,14 +82,14 @@ def requires_auth(f):
 
             # Get key from JSON Web Key Set
             rsa_key = {}
-            for key in jwks["keys"]:
-                if key["kid"] == unverified_header["kid"]:
+            for key in jwks['keys']:
+                if key['kid'] == unverified_header['kid']:
                     rsa_key = {
-                        "kty": key["kty"],
-                        "kid": key["kid"],
-                        "use": key["use"],
-                        "n": key["n"],
-                        "e": key["e"]
+                        'kty': key['kty'],
+                        'kid': key['kid'],
+                        'use': key['use'],
+                        'n': key['n'],
+                        'e': key['e']
                     }
 
             # Validate token
@@ -101,9 +102,9 @@ def requires_auth(f):
                     payload = jwt.decode(
                         token,
                         rsa_key,
-                        algorithms=ALGORITHMS,
-                        audience=API_AUDIENCE,
-                        issuer= f'https://{AUTH0_DOMAIN}/'
+                        algorithms = ALGORITHMS,
+                        audience = API_AUDIENCE,
+                        issuer = f'https://{AUTH0_DOMAIN}/'
                     )
 
                 # Handle expired signatures
