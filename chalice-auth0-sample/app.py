@@ -1,5 +1,5 @@
 from chalice import Chalice
-from chalicelib.auth0 import auth0, requires_auth
+from chalicelib.auth0.blueprint import auth0, requires_auth
 
 # App Configuration
 app = Chalice(app_name='chalice-auth0-sample')
