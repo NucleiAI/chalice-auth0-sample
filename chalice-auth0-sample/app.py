@@ -7,7 +7,7 @@ from jose import jwt
 from chalice import Chalice, Response
 from functools import wraps
 
-app = Chalice(app_name='chalice-api-sample')
+app = Chalice(app_name='chalice-auth0-sample')
 
 # Auth0 Resources
 AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
