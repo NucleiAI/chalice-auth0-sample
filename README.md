@@ -83,6 +83,8 @@ Before deploying the app, you will need to update the `environment_variables` in
   "environment_variables": {
     "ALGORITHMS": "RS256",
     "API_AUDIENCE": "https://unique-idenfier-for-the-api",
+    "AUTH0_APP_CLIENT_ID": "your-auth0-app-client-id",
+    "AUTH0_APP_CLIENT_SECRET": "your-auth0-app-client-secret",
     "AUTH0_DOMAIN": "dev-12345678.us.auth0.com"
   },
   "stages": {
