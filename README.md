@@ -128,17 +128,6 @@ To test the sample app's public endpoint with HTTPie:
 ```bash
 $ http GET {your REST API URL}
 HTTP/1.1 200 OK
-Connection: keep-alive
-Content-Length: 91
-Content-Type: application/json
-Date: Tue, 12 Apr 2022 17:35:45 GMT
-Via: 1.1 12345.cloudfront.net (CloudFront)
-X-Amz-Cf-Id: 12345-wrkWFLNwRyJDCQktZ-LFraxlA==
-X-Amz-Cf-Pop: 12345-C1
-X-Amzn-Trace-Id: Root=1-12345-678912345;Sampled=0
-X-Cache: Miss from cloudfront
-x-amz-apigw-id: AbcDeFghIGKMnoP=
-x-amzn-RequestId: 4dab531c-a8c4-42eb-9444-adfb4b3d1048
 
 {
     "message": "Hello from a public endpoint! You don't need to be authenticated to see this."
@@ -151,17 +140,6 @@ To test the sample app's private endpoint with HTTPie:
 ```bash
 $ http GET {your REST API URL}/private Authorization:"Bearer {your test Auth0 token}"
 HTTP/1.1 200 OK
-Connection: keep-alive
-Content-Length: 91
-Content-Type: application/json
-Date: Tue, 12 Apr 2022 17:35:45 GMT
-Via: 1.1 12345.cloudfront.net (CloudFront)
-X-Amz-Cf-Id: 12345-wrkWFLNwRyJDCQktZ-LFraxlA==
-X-Amz-Cf-Pop: 12345-C1
-X-Amzn-Trace-Id: Root=1-12345-678912345;Sampled=0
-X-Cache: Miss from cloudfront
-x-amz-apigw-id: AbcDeFghIGKMnoP=
-x-amzn-RequestId: 4dab531c-a8c4-42eb-9444-adfb4b3d1048
 
 {
     "message": "Hello from a private endpoint! You need to be authenticated to see this."
